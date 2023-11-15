@@ -1,0 +1,32 @@
+#Import! Import all required modules and the created python files should be able to execute <- HAVEN'T TESTED! Try by turning this file into '.exe', should package the library(imported modules) too.
+import random
+import os
+
+name1 =  ["first", "second", "third", "fourth", "fifth"] #Names for the file(s), you can add your own and remove the preset
+path1 = ["/", "/", "/"] #Directory/Directories to put the files in. In this format "/directory/format" not "\directory\format", remove C:\ to or whatever you got
+code1 = ["print('Hello'), print('Goodbye')", "import os\nx=os.getcwd()\nprint('you have awoken me from my deep slumber!'+x)"] #Code for the file(s) to use, can use multiple codes cuz it's a tuple after all
+
+i = 1
+while i < 10: #Amount of times created/How many files to create
+    x = random.choice(name1) #Randomly chooses a name from the "Name1"-tuple to create files in later stages
+    p = random.choice(path1) #Randomly chooses a directory(If put more than 1) from the "path1"-tuple to create files in that directory or those directories in later stages
+    w = random.choice(code1) #Randomly chooses what code to write in the created python files, good luck if you have plenty of files and plenty of directories, of course you could use an identifier which would make your life easier
+    os.chdir(p) #Changes path to -> check out path1[]
+    with open(x +".py", "w") as f:
+        f.write(w) #Creates and writes to file by using the code that was put in code1[]
+    i += 1
+    print("Done")
+
+
+while True:
+    x = random.choice(name1)
+    p = random.choice(path1)
+    os.chdir(p)
+    print("Changed Directory------------------------------------------------------------------------------------------------------")#Test
+    try:
+        e = exec(open(x+".py").read()) #Executes the file and just continues cause I use try and except + while loop, ez
+    except:
+        print("Retrying!")
+pass
+
+#A code formatter is in the works
